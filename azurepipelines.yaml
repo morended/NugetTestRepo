@@ -1,0 +1,15 @@
+trigger:
+- main
+
+pool: 
+  name: 'Default'
+
+stages:
+- stage: NugetValidation
+  jobs:
+  - job: NugetValidation
+    displayName: Nuget Validation
+    pool: 'Default'
+    steps:
+    - checkout: self
+      displayName: Checkout NugetTestRepo
