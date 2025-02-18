@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "mQ4wTi2kfFg=",
+  "dgSpecHash": "Ry1uHNgLh+c=",
   "success": true,
   "projectFilePath": "C:\\Development\\NugetTestRepo\\BasicNonCompliant\\test.csproj",
   "expectedPackageFiles": [
-    "C:\\.tools\\.nuget\\packages\\dawn.guard\\1.12.0\\dawn.guard.1.12.0.nupkg.sha512"
+    "C:\\.tools\\.nuget\\packages\\dawn.guard\\1.12.0\\dawn.guard.1.12.0.nupkg.sha512",
+    "C:\\.tools\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
+    "C:\\.tools\\.nuget\\packages\\telegram.bot\\18.0.0\\telegram.bot.18.0.0.nupkg.sha512"
   ],
   "logs": []
 }
