@@ -13,3 +13,38 @@ stages:
     steps:
     - checkout: self
       displayName: Checkout NugetTestRepo
+    - task: NuGetAuthenticate@1
+      inputs:
+        feedUrl: 'https://pkgs.dev.azure.com/mseng/AzureDevOps/_packaging/AzureDevOps_PublicPackages/nuget/registry/'
+    - task: DotNetCoreCLI@2 
+      displayName: Build BasicNonCompliant
+      inputs:
+        command: build
+        feedsToUse: config
+        nugetConfigPath: '$(Build.SourcesDirectory)/BasicNonCompliant/nuget.config'
+        arguments: >
+          --no-restore
+          --configfile $(Build.SourcesDirectory)/BasicNonCompliant/nuget.config
+          --verbosity detailed
+    
+    - task: DotNetCoreCLI@2 
+      displayName: Build BasicNonCompliant
+      inputs:
+        command: build
+        feedsToUse: config
+        nugetConfigPath: '$(Build.SourcesDirectory)/NugetNoclear/nuget.config'
+        arguments: >
+          --no-restore
+          --configfile $(Build.SourcesDirectory)/NugetNoclear/nuget.config
+          --verbosity detailed
+    
+    - task: DotNetCoreCLI@2 
+      displayName: Build BasicNonCompliant
+      inputs:
+        command: build
+        feedsToUse: config
+        nugetConfigPath: '$(Build.SourcesDirectory)/NugetNonAA/nuget.config'
+        arguments: >
+          --no-restore
+          --configfile $(Build.SourcesDirectory)/NugetNonAA/nuget.config
+          --verbosity detailed
