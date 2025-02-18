@@ -28,15 +28,7 @@ stages:
             inputs:
               targetType: "inline"
               script: "Get-Content $(Build.SourcesDirectory)/NugetNonAA/nuget.config"
-          - task: DotNetCoreCLI@2
-            displayName: Restore
-            inputs:
-              command: restore
-              feedsToUse: config
-              nugetConfigPath: $(Build.SourcesDirectory)/nuget.config
-              includeNuGetOrg: false
-              projects: '**/*.csproj'
-              verbosityRestore: 'detailed'
+
           - task: DotNetCoreCLI@2
             displayName: Build BasicNonCompliant
             inputs:
@@ -44,9 +36,7 @@ stages:
               feedsToUse: config
               nugetConfigPath: "$(Build.SourcesDirectory)/nuget.config"
               projects: "$(Build.SourcesDirectory)/BasicNonCompliant/test.csproj"
-              arguments: >
-                --configfile $(Build.SourcesDirectory)/nuget.config
-                --verbosity detailed
+              verbosityRestore: 'detailed'
 
           - task: DotNetCoreCLI@2
             displayName: Build BasicNonCompliant
@@ -55,9 +45,7 @@ stages:
               feedsToUse: config
               projects: "$(Build.SourcesDirectory)/NugetNoclear/subfolder/test.csproj"
               nugetConfigPath: "$(Build.SourcesDirectory)/NugetNoclear/nuget.config"
-              arguments: >
-                --configfile $(Build.SourcesDirectory)/NugetNoclear/nuget.config
-                --verbosity detailed
+              verbosityRestore: 'detailed'
 
           - task: DotNetCoreCLI@2
             displayName: Build BasicNonCompliant
@@ -66,6 +54,4 @@ stages:
               feedsToUse: config
               projects: "$(Build.SourcesDirectory)/NugetNonAA/subfolder/test.csproj"
               nugetConfigPath: "$(Build.SourcesDirectory)/NugetNonAA/nuget.config"
-              arguments: >
-                --configfile $(Build.SourcesDirectory)/NugetNonAA/nuget.config
-                --verbosity detailed
+              verbosityRestore: 'detailed'
