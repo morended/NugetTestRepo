@@ -22,6 +22,7 @@ stages:
         command: build
         feedsToUse: config
         nugetConfigPath: '$(Build.SourcesDirectory)/BasicNonCompliant/nuget.config'
+        projects: '**/*.csproj'
         arguments: >
           --no-restore
           --configfile $(Build.SourcesDirectory)/BasicNonCompliant/nuget.config
@@ -32,6 +33,7 @@ stages:
       inputs:
         command: build
         feedsToUse: config
+        projects: '**/*.csproj'
         nugetConfigPath: '$(Build.SourcesDirectory)/NugetNoclear/nuget.config'
         arguments: >
           --no-restore
@@ -43,6 +45,7 @@ stages:
       inputs:
         command: build
         feedsToUse: config
+        projects: '**/*.csproj'
         nugetConfigPath: '$(Build.SourcesDirectory)/NugetNonAA/nuget.config'
         arguments: >
           --no-restore
