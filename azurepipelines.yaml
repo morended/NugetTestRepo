@@ -16,6 +16,18 @@ stages:
     - task: NuGetAuthenticate@1
       inputs:
         feedUrl: 'https://pkgs.dev.azure.com/mseng/AzureDevOps/_packaging/AzureDevOps_PublicPackages/nuget/registry/'
+    - task: PowerShell@2
+      inputs:
+        targetType: 'inline'
+        script: 'Get-Content $(Build.SourcesDirectory)/BasicNonCompliant/nuget.config'
+    - task: PowerShell@2
+      inputs:
+        targetType: 'inline'
+        script: 'Get-Content $(Build.SourcesDirectory)/NugetNoclear/nuget.config'
+    - task: PowerShell@2
+      inputs:
+        targetType: 'inline'
+        script: 'Get-Content $(Build.SourcesDirectory)/NugetNonAA/nuget.config'
     - task: DotNetCoreCLI@2 
       displayName: Build BasicNonCompliant
       inputs:
