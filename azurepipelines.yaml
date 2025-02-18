@@ -31,35 +31,32 @@ stages:
           - task: DotNetCoreCLI@2
             displayName: Build BasicNonCompliant
             inputs:
-              command: build
+              command: restore
               feedsToUse: config
               nugetConfigPath: "$(Build.SourcesDirectory)/nuget.config"
               projects: "$(Build.SourcesDirectory)/BasicNonCompliant/test.csproj"
               arguments: >
-                --no-restore
                 --configfile $(Build.SourcesDirectory)/nuget.config
                 --verbosity detailed
 
           - task: DotNetCoreCLI@2
             displayName: Build BasicNonCompliant
             inputs:
-              command: build
+              command: restore
               feedsToUse: config
               projects: "$(Build.SourcesDirectory)/NugetNoclear/subfolder/test.csproj"
               nugetConfigPath: "$(Build.SourcesDirectory)/NugetNoclear/nuget.config"
               arguments: >
-                --no-restore
                 --configfile $(Build.SourcesDirectory)/NugetNoclear/nuget.config
                 --verbosity detailed
 
           - task: DotNetCoreCLI@2
             displayName: Build BasicNonCompliant
             inputs:
-              command: build
+              command: restore
               feedsToUse: config
               projects: "$(Build.SourcesDirectory)/NugetNonAA/subfolder/test.csproj"
               nugetConfigPath: "$(Build.SourcesDirectory)/NugetNonAA/nuget.config"
               arguments: >
-                --no-restore
                 --configfile $(Build.SourcesDirectory)/NugetNonAA/nuget.config
                 --verbosity detailed
