@@ -29,6 +29,15 @@ stages:
               targetType: "inline"
               script: "Get-Content $(Build.SourcesDirectory)/NugetNonAA/nuget.config"
           - task: DotNetCoreCLI@2
+            displayName: Restore
+            inputs:
+              command: restore
+              feedsToUse: config
+              nugetConfigPath: $(Build.SourcesDirectory)/nuget.config
+              includeNuGetOrg: false
+              projects: '**/*.csproj'
+              verbosityRestore: 'detailed'
+          - task: DotNetCoreCLI@2
             displayName: Build BasicNonCompliant
             inputs:
               command: restore
